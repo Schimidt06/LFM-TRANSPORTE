@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LFM Transportes | Soluções em Logística</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="Especialistas em Transporte Graneleiro e Tanque. Segurança, pontualidade e eficiência partindo de Jaú/SP para todo o Brasil." />
+    <meta name="theme-color" content="#EAB308" />
+    
+    <!-- Open Graph / Social Media (WhatsApp, LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="LFM Transportes | Logística Graneleira e Tanque" />
+    <meta property="og:description" content="Frota moderna e base estratégica em Jaú/SP. Solicite sua cotação agora." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1594386629986-189f78326793?q=80&w=1200&auto=format&fit=crop" />
+    <meta property="og:url" content="https://lfmtransportes.com.br/" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Rajdhani', 'sans-serif'],
+            },
+            colors: {
+              gold: {
+                400: '#FACC15',
+                500: '#EAB308',
+                600: '#CA8A04',
+                700: '#A16207',
+                metallic: '#D4AF37',
+              },
+              slate: {
+                950: '#020617',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+        /* Offset para o menu fixo não cobrir o conteúdo */
+        scroll-padding-top: 100px;
+      }
+      body {
+        background-color: #020617;
+        color: white;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f172a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #475569;
+        border-radius: 4px;
+        border: 2px solid #0f172a;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #ca8a04;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <!-- Critical for Vite: Entry point -->
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
