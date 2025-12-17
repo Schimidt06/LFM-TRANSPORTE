@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
@@ -6,8 +6,14 @@ import { Services } from './components/Services';
 import { Testimonials } from './components/Testimonials';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
+import { MessageCircle, X, User } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const MotionDiv = motion.div as any;
 
 function App() {
+  const [showWaMenu, setShowWaMenu] = useState(false);
+
   return (
     <div className="bg-slate-950 min-h-screen text-slate-50 antialiased selection:bg-yellow-500 selection:text-slate-950 font-sans">
       <Navbar />
@@ -20,17 +26,79 @@ function App() {
       </main>
       <Footer />
       
-      {/* Floating WhatsApp Button for Mobile */}
-      <a 
-        href="https://wa.me/5514991851871"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 md:hidden z-50 bg-[#25D366] p-4 rounded-full shadow-lg text-white hover:bg-[#20bd5a] transition-colors"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-        </svg>
-      </a>
+      {/* Floating Multi-Agent WhatsApp Widget */}
+      <div className="fixed bottom-5 right-5 md:bottom-8 md:right-8 z-[100] flex flex-col items-end">
+        <AnimatePresence>
+          {showWaMenu && (
+            <MotionDiv
+              initial={{ opacity: 0, scale: 0.8, y: 20, transformOrigin: 'bottom right' }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 20 }}
+              className="bg-slate-900 border border-white/10 rounded-xl shadow-2xl p-4 mb-4 w-[280px] md:w-72 backdrop-blur-xl"
+            >
+              <div className="flex justify-between items-center mb-4 pb-2 border-b border-white/5">
+                <span className="font-bold text-xs text-yellow-500 uppercase tracking-widest">Atendimento Direto</span>
+                <button 
+                  onClick={() => setShowWaMenu(false)} 
+                  className="text-slate-500 hover:text-white p-1"
+                  aria-label="Fechar atendimento"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+              <div className="space-y-2">
+                <a 
+                  href="https://wa.me/5514991851871"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 bg-white/5 hover:bg-yellow-600 hover:text-slate-950 rounded-lg transition-all group active:scale-[0.98]"
+                >
+                  <div className="p-2 bg-yellow-500 rounded-full group-hover:bg-slate-950 group-hover:text-yellow-500 transition-colors">
+                    <User size={16} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-bold uppercase opacity-60">WhatsApp Unid. 1</span>
+                    <span className="text-sm font-bold">(14) 99185-1871</span>
+                  </div>
+                </a>
+                <a 
+                  href="https://wa.me/5514981095496"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 bg-white/5 hover:bg-yellow-600 hover:text-slate-950 rounded-lg transition-all group active:scale-[0.98]"
+                >
+                  <div className="p-2 bg-yellow-500 rounded-full group-hover:bg-slate-950 group-hover:text-yellow-500 transition-colors">
+                    <User size={16} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-bold uppercase opacity-60">WhatsApp Unid. 2</span>
+                    <span className="text-sm font-bold">(14) 98109-5496</span>
+                  </div>
+                </a>
+              </div>
+            </MotionDiv>
+          )}
+        </AnimatePresence>
+        
+        <button 
+          onClick={() => setShowWaMenu(!showWaMenu)}
+          className={`p-4 md:p-5 rounded-full shadow-2xl text-white transition-all transform hover:scale-105 active:scale-90 flex items-center gap-2 relative ${showWaMenu ? 'bg-slate-800' : 'bg-[#25D366]'}`}
+          aria-label={showWaMenu ? "Fechar opções" : "Iniciar conversa via WhatsApp"}
+        >
+          {showWaMenu ? <X size={26} /> : <MessageCircle size={26} fill="currentColor" />}
+          {!showWaMenu && (
+            <span className="hidden sm:block font-bold pr-1 text-sm md:text-base">Cotação Rápida</span>
+          )}
+          
+          {/* Subtle Notification Dot */}
+          {!showWaMenu && (
+            <span className="absolute -top-1 -right-1 flex h-4 w-4">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-4 w-4 bg-yellow-500"></span>
+            </span>
+          )}
+        </button>
+      </div>
     </div>
   );
 }
