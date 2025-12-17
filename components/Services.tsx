@@ -7,7 +7,7 @@ const services = [
   {
     id: 1,
     title: "Transporte Graneleiro",
-    icon: <Wheat className="w-10 h-10 md:w-12 md:h-12 text-yellow-500" />,
+    icon: <Wheat className="w-10 h-10 md:w-12 md:h-12" />,
     specs: "Bitrens e Rodotrens",
     features: ["Grãos (Soja, Milho, Café)", "Fertilizantes", "Lonas Reforçadas"],
     description: "Operação focada em grandes volumes com escoamento direto de fazendas e armazéns. Equipamentos novos que garantem a integridade da carga.",
@@ -16,7 +16,7 @@ const services = [
   {
     id: 2,
     title: "Transporte Tanque",
-    icon: <Droplets className="w-10 h-10 md:w-12 md:h-12 text-yellow-500" />,
+    icon: <Droplets className="w-10 h-10 md:w-12 md:h-12" />,
     specs: "Inox Alimentício",
     features: ["Líquidos alimentícios", "Óleos vegetais", "Limpeza Certificada"],
     description: "Especialistas em carga líquida. Tanques em aço inox com rigoroso controle sanitário e térmico, monitorados 24h via telemetria.",
@@ -77,11 +77,12 @@ export const Services: React.FC = () => {
 
               <div className="p-6 md:p-10 flex-grow flex flex-col">
                 <div className="flex items-center gap-4 mb-4 md:mb-6">
-                  <div className="p-2.5 md:p-3 bg-white/5 rounded-sm text-yellow-500 group-hover:bg-yellow-500 group-hover:text-slate-950 transition-colors">
+                  {/* Icon Container - No more yellow background on hover */}
+                  <div className="p-2.5 md:p-3 bg-white/5 rounded-sm text-yellow-500 transition-all duration-500 group-hover:scale-110 group-hover:text-yellow-400 group-hover:bg-white/10">
                     {service.icon}
                   </div>
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-tight">
+                  <div className="transition-transform duration-500 group-hover:translate-x-2">
+                    <h3 className="text-xl md:text-2xl font-display font-bold text-white uppercase tracking-tight group-hover:text-yellow-500 transition-colors">
                       {service.title}
                     </h3>
                     <span className="text-yellow-600 text-[10px] font-black uppercase tracking-[0.15em]">{service.specs}</span>
@@ -98,7 +99,7 @@ export const Services: React.FC = () => {
                   </h4>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
                     {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2 text-xs md:text-sm text-slate-500 border-l border-yellow-600/30 pl-3">
+                      <li key={i} className="flex items-center gap-2 text-xs md:text-sm text-slate-500 border-l border-yellow-600/30 pl-3 group-hover:border-yellow-500 transition-colors">
                         {feature}
                       </li>
                     ))}

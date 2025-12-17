@@ -64,20 +64,25 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center relative z-50">
-        {/* Logo */}
-        <a 
+        {/* Logo Reativo */}
+        <MotionA 
           href="#inicio" 
-          onClick={(e) => handleScrollToSection(e, '#inicio')}
-          className="flex items-center gap-2 group active:scale-95 transition-transform"
+          onClick={(e: any) => handleScrollToSection(e, '#inicio')}
+          whileHover={{ 
+            scale: 1.05,
+            filter: "drop-shadow(0 0 12px rgba(234, 179, 8, 0.6))" 
+          }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          className="flex items-center gap-2 group cursor-pointer"
         >
           <div className="flex flex-col">
-            <h1 className="text-2xl md:text-3xl font-display font-bold italic tracking-tighter text-white leading-none">
+            <h1 className="text-2xl md:text-3xl font-display font-bold italic tracking-tighter text-white leading-none transition-colors group-hover:text-yellow-500">
               LFM
             </h1>
-            <div className="bg-gradient-to-r from-transparent via-yellow-500 to-transparent h-[2px] w-full mt-1 group-hover:scale-x-110 transition-transform duration-500 origin-center"></div>
+            <div className="bg-gradient-to-r from-transparent via-yellow-500 to-transparent h-[2px] w-full mt-1 group-hover:scale-x-125 transition-transform duration-500 origin-center"></div>
           </div>
-          <span className="hidden sm:block text-[10px] md:text-xs font-bold tracking-[0.2em] text-slate-400 ml-2 mt-2">TRANSPORTES</span>
-        </a>
+          <span className="hidden sm:block text-[10px] md:text-xs font-bold tracking-[0.2em] text-slate-400 ml-2 mt-2 group-hover:text-yellow-600 transition-colors uppercase">TRANSPORTES</span>
+        </MotionA>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
